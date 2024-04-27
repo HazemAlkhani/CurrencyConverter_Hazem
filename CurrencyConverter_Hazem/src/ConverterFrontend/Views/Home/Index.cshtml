@@ -1,0 +1,46 @@
+﻿@model IndexViewModel;
+@{
+    ViewData["Title"] = "Currency Converter";
+}
+
+<div class="text-center">
+    <form id="convertForm" method="post" asp-controller="Home" asp-action="ConvertCurrency">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="source">Source</label>
+                <select id="source" name="source" class="form-control">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="JPY">JPY</option>
+                    <option value="GBP">GBP</option>
+                    <option value="AUD">AUD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="target">Target</label>
+                <select id="target" name="target" class="form-control">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="JPY">JPY</option>
+                    <option value="GBP">GBP</option>
+                    <option value="AUD">AUD</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="value">Value</label>
+                <input id="value" name="value" class="form-control"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Convert</button>
+        </div>
+    </form>
+    <br/>
+    @if (Model.Conversion != null)
+    {
+        <p id="result">@Model.Conversion.Value @Model.Conversion.Source is @Model.Conversion.Result @Model.Conversion.Target</p>
+    }
+</div>
+
+@if(Model.HistoryEnabled)
+{
+    <partial name="_History" model="Model.Conversions"/>
+}

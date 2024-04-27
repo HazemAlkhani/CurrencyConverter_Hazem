@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-ConverterAPI",
+      "appliesTo": "CurrencyConverter_Hazem2/src/ConverterAPI/",
+      "type": "launch"
+    }
+  ]
+}

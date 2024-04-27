@@ -1,0 +1,25 @@
+@model Models.CurrencyConversion[];
+<br/>
+<h2>History</h2>
+<table id="history" class="table">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Source</th>
+        <th>Target</th>
+        <th>Value</th>
+        <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach(var conversion in Model) {
+        <tr>
+            <td>@conversion.Date.ToString("dd/MM/yyyy HH:mm")</td>
+            <td>@conversion.Source</td>
+            <td>@conversion.Target</td>
+            <td>@conversion.Value</td>
+            <td>@conversion.Result</td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,135 @@
+kind: pipeline
+type: docker
+name: integration
+
+steps:
+  - name: code-analysis
+    image: boulundeasv/dotnet-sdk-with-java
+    environment:
+      SONARSECRET:
+        from_secret: SonarQubeSecret
+    commands:
+     
+---
+
+kind: pipeline
+type: docker
+name: deliver
+depends_on:
+  - integration
+
+steps:
+  - name: publish api
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      context: src
+      dockerfile: src/ConverterAPI/Dockerfile
+      repo: hazemalkhani/converterapi
+      tags: 
+        - staging
+
+  - name: publish web
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      context: src
+      dockerfile: src/ConverterFrontend/Dockerfile
+      repo: hazemalkhani/converterfrontend
+      tags: 
+        - staging
+
+  - name: trigger update
+    image: curlimages/curl
+    commands:
+      - "curl --fail -X GET 'http://62.169.21.165:8080/v1/update' -H 'Authorization: Bearer mytoken'" 
+      - sleep 10
+    depends_on:
+      - publish api
+      - publish web
+
+  - name: update database
+    image: flyway/flyway
+    commands:
+      - flyway migrate
+        -url=jdbc:mariadb://62.169.21.166:3306/conversions
+        -user=myuser
+        -password=mypassword
+        -locations=filesystem:./db/flyway/migrations
+    depends_on:
+      - trigger update
+
+  - name: performance tests
+    image: grafana/k6
+    commands:
+      - k6 run test/performance/spike.js
+    depends_on:
+      - update database
+
+  - name: end-to-end tests
+    image: testcafe/testcafe
+    commands:
+      - testcafe chromium:headless test/e2e/count-conversions.js
+    depends_on:
+      - update database
+
+---
+
+kind: pipeline
+type: docker
+name: deploy
+depends_on:
+  - deliver
+
+steps:
+  - name: release api
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      context: src
+      dockerfile: src/ConverterAPI/Dockerfile
+      repo: hazemalkhani/converterapi
+      tags:
+        - prod
+
+  - name: release web
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: DockerUsername
+      password:
+        from_secret: DockerPassword
+      context: src
+      dockerfile: src/ConverterFrontend/Dockerfile
+      repo: hazemalkhani/converterfrontend
+      tags:
+        - prod
+
+  - name: trigger update
+    image: curlimages/curl
+    commands:
+      - "curl --fail -X GET 'http://62.169.21.166:8080/v1/update' -H 'Authorization: Bearer mytoken'" 
+      - sleep 10
+    depends_on:
+      - release api
+      - release web
+
+  - name: update database
+    image: flyway/flyway
+    commands:
+      - flyway migrate
+        -url=jdbc:mariadb://62.169.21.166:3306/conversions
+        -user=myuser
+        -password=mypassword
+        -locations=filesystem:./db/flyway/migrations
+    depends_on:
+      - trigger update

@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  converter-frontend:
+    build:
+      context: src
+      dockerfile: src/ConverterFrontend/Dockerfile
+    image: hazemalkhani/converterfrontend:staging
+    ports:
+      - "5001:80"
+    depends_on:
+      - converter-api
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+  
+  converter-api:
+    build:
+      context: src
+      dockerfile: src/ConverterAPI/Dockerfile
+    image: hazemalkhani/converterapi:staging
+    ports:
+      - "5002:80"
+    depends_on:
+      - mariadb
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_DATABASE: conversions
+      MYSQL_USER: root
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - converter_data:/var/lib/mysql
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --debug --http-api-update
+    environment:
+      - WATCHTOWER_HTTP_API_TOKEN=mytoken
+      - WATCHTOWER_LABEL_ENABLE=true
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
+    ports:
+      - 8080:8080
+
+volumes:
+  mariadb_data:

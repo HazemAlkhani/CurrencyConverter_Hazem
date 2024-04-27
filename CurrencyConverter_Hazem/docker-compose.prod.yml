@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  converter-frontend:
+    build:
+      context: src
+      dockerfile: src/ConverterFrontend/Dockerfile
+    image: hazemalkhani/converterfrontend:prod
+    ports:
+      - "5001:80" 
+
+  converter-api:
+    build:
+      context: src
+      dockerfile: src/ConverterAPI/Dockerfile
+    image: hazemalkhani/converterapi:prod
+    ports:
+      - "5002:80"  
+
+  featurehub:
+    image: featurehub/party-server:latest
+    restart: always
+    volumes:
+      - featurehub-h2-data:/db
+    ports:
+      - "8085:8085"  
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
+
+volumes:
+  featurehub-h2-data:

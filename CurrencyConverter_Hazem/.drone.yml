@@ -1,7 +1,6 @@
 kind: pipeline
 type: docker
 name: integration
-
 steps:
   - name: code-analysis
     image: boulundeasv/dotnet-sdk-with-java
@@ -9,9 +8,16 @@ steps:
       SONARSECRET:
         from_secret: SonarQubeSecret
     commands:
-     
----
+      - exit 0
+      - dotnet sonarscanner begin 
+        /k:"easv-devops_CurrencyConverter_Hazem_AY8hNkVgEVvRW2O60E87" 
+        /d:sonar.host.url="http://sonar.setgo.dk:9000"  
+        /d:sonar.token="sqp_82407812210b76f9245d7707a503fb8333f20a29"
+      - dotnet build
+      - dotnet sonarscanner end /d:sonar.token="sqp_82407812210b76f9245d7707a503fb8333f20a29"
 
+
+---
 kind: pipeline
 type: docker
 name: deliver

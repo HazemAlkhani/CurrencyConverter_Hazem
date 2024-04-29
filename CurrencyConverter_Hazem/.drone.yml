@@ -32,8 +32,8 @@ steps:
         from_secret: DockerUsername
       password:
         from_secret: DockerPassword
-      context: src
-      dockerfile: src/ConverterAPI/Dockerfile
+      context: CurrencyConverter_Hazem/src
+      dockerfile: ConverterAPI/Dockerfile
       repo: hazemalkhani/converterapi
       tags: 
         - staging
@@ -45,8 +45,8 @@ steps:
         from_secret: DockerUsername
       password:
         from_secret: DockerPassword
-      context: src
-      dockerfile: src/ConverterFrontend/Dockerfile
+      context: CurrencyConverter_Hazem/src
+      dockerfile: ConverterFrontend/Dockerfile
       repo: hazemalkhani/converterfrontend
       tags: 
         - staging
@@ -64,7 +64,7 @@ steps:
     image: flyway/flyway
     commands:
       - flyway migrate
-        -url=jdbc:mariadb://62.169.21.166:3306/conversions
+        -url=jdbc:mariadb://62.169.21.165:3306/conversions
         -user=myuser
         -password=mypassword
         -locations=filesystem:./db/flyway/migrations
@@ -101,8 +101,8 @@ steps:
         from_secret: DockerUsername
       password:
         from_secret: DockerPassword
-      context: src
-      dockerfile: src/ConverterAPI/Dockerfile
+      context: CurrencyConverter_Hazem/src
+      dockerfile: ConverterAPI/Dockerfile
       repo: hazemalkhani/converterapi
       tags:
         - prod
@@ -114,8 +114,8 @@ steps:
         from_secret: DockerUsername
       password:
         from_secret: DockerPassword
-      context: src
-      dockerfile: src/ConverterFrontend/Dockerfile
+      context: CurrencyConverter_Hazem/src
+      dockerfile: ConverterFrontend/Dockerfile
       repo: hazemalkhani/converterfrontend
       tags:
         - prod
@@ -123,7 +123,7 @@ steps:
   - name: trigger update
     image: curlimages/curl
     commands:
-      - "curl --fail -X GET 'http://62.169.21.166:8080/v1/update' -H 'Authorization: Bearer mytoken'" 
+      - "curl --fail -X GET 'http://62.169.21.165:8080/v1/update' -H 'Authorization: Bearer mytoken'" 
       - sleep 10
     depends_on:
       - release api
@@ -133,7 +133,7 @@ steps:
     image: flyway/flyway
     commands:
       - flyway migrate
-        -url=jdbc:mariadb://62.169.21.166:3306/conversions
+        -url=jdbc:mariadb://62.169.21.165:3306/conversions
         -user=myuser
         -password=mypassword
         -locations=filesystem:./db/flyway/migrations

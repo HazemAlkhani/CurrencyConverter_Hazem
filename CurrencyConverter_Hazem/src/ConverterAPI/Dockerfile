@@ -1,5 +1,5 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-WORKDIR /app
+WORKDIR /src
 EXPOSE 80
 EXPOSE 443
 

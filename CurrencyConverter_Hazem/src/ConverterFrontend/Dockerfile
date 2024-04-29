@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["ConverterFrontend.csproj", "./"]
+COPY ["src/ConverterFrontend/ConverterFrontend.csproj", "./"]
 RUN dotnet restore "ConverterFrontend.csproj"
 COPY . .
 WORKDIR "/src/ConverterFrontend"

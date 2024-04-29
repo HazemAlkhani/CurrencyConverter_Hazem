@@ -5,7 +5,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["ConverterAPI/ConverterAPI.csproj", "ConverterAPI/"]
+COPY ["src/ConverterAPI/ConverterAPI.csproj", "ConverterAPI/"]
+
 
 RUN dotnet restore "ConverterAPI/ConverterAPI.csproj"
 COPY . .

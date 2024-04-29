@@ -10,11 +10,11 @@ steps:
     commands:
       - exit 0
       - dotnet sonarscanner begin 
-        /k:"easv-devops_CurrencyConverter_Hazem_AY8hNkVgEVvRW2O60E87" 
+        /k:"easv-devops_CurrencyConverter_Hazem_AY8q1dQsEVvRW2O60FFG" 
         /d:sonar.host.url="http://sonar.setgo.dk:9000"  
-        /d:sonar.token="sqp_82407812210b76f9245d7707a503fb8333f20a29"
+        /d:sonar.token="sqp_b2526b04ac157cc8e2510dfa19e8fe78c64ddce6"
       - dotnet build
-      - dotnet sonarscanner end /d:sonar.token="sqp_82407812210b76f9245d7707a503fb8333f20a29"
+      - dotnet sonarscanner end /d:sonar.token="sqp_b2526b04ac157cc8e2510dfa19e8fe78c64ddce6"
 
 
 ---

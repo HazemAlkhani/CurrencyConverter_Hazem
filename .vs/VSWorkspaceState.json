@@ -1,12 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.sonarqube",
-    "\\CurrencyConverter_Hazem2",
-    "\\CurrencyConverter_Hazem2\\src",
-    "\\CurrencyConverter_Hazem2\\test",
-    "\\CurrencyConverter_Hazem2\\test\\e2e"
+    "\\.idea",
+    "\\CurrencyConverter_Hazem",
+    "\\CurrencyConverter_Hazem\\src",
+    "\\CurrencyConverter_Hazem\\src\\ConverterAPI"
   ],
-  "SelectedNode": "\\CurrencyConverter_Hazem2",
+  "SelectedNode": "\\CurrencyConverter_Hazem\\src\\ConverterAPI\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,4 +1,5 @@
 import { Selector } from 'testcafe';
+import * as test from "node:test";
 
 fixture `Count Conversions`
     .page `http://62.169.21.165:5001/`;

@@ -1,6 +1,6 @@
 databaseType = "MariaDb"
-id = "ff100463-f1e7-4a2a-b7df-01a4dc3910bc"
-name = "flyway"
+id = "ca4c9651-fa99-4347-b499-a4ad6cc3e96c"
+name = "Flyway"
 
 [flyway]
 locations = [ "filesystem:migrations" ]
@@ -21,3 +21,7 @@ filterFile = "filter.rgf"
 
 [redgateCompare.mysql.options.ignores]
 ignoreNewlinesInTextObjects = "off"
+
+[environments.1]
+url = "jdbc:mysql://localhost:3306"
+schemas = [ "flyway.user=root flyway.password=mypassword" ]

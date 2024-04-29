@@ -7,13 +7,13 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["src/ConverterAPI/ConverterAPI.csproj", "ConverterAPI/"]
 
-
 RUN dotnet restore "ConverterAPI/ConverterAPI.csproj"
 COPY . .
 WORKDIR "/src/ConverterAPI"
 RUN dotnet build "ConverterAPI.csproj" -c Release -o /app/build
 
-FROM build AS publish
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS publish
+WORKDIR /src/ConverterAPI
 RUN dotnet publish "ConverterAPI.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final

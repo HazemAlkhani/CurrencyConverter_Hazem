@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="897e0ac6-3b34-43f1-97ab-f5737b954e54" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CurrencyConverter_Hazem/src/ConverterFrontend/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CurrencyConverter_Hazem/src/ConverterAPI/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/CurrencyConverter_Hazem/src/ConverterAPI/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CurrencyConverter_Hazem/src/ConverterFrontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/CurrencyConverter_Hazem/src/ConverterFrontend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CurrencyConverter_Hazem/src/Models/CurrencyConversion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CurrencyConverter_Hazem/src/Models/CurrencyConversion.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f10e5ce6-6164-43cd-aa04-1cb3db352a01.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/f10e5ce6-6164-43cd-aa04-1cb3db352a01/storage_v2/_src_/schema/converter.oIkn6w.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CurrencyConverter_Hazem/db/flyway/flyway.toml" beforeDir="false" afterPath="$PROJECT_DIR$/CurrencyConverter_Hazem/db/flyway/flyway.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +33,12 @@
     &quot;assignee&quot;: &quot;HazemAlkhani&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/HazemAlkhani/CurrencyConverter_Hazem.git&quot;,
-    &quot;accountId&quot;: &quot;4815395b-e5e7-4246-b73c-3806f7366017&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/HazemAlkhani/CurrencyConverter_Hazem.git",
+    "accountId": "bb616f37-c20a-4082-a558-7e9697db198b"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -50,6 +52,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/hazem/RiderProjects/CurrencyConverter_Hazem",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -58,6 +61,11 @@
     "nodejs_package_manager_path": "npm",
     "npm.test.executor": "Run",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
+    ]
   }
 }]]></component>
   <component name="RunManager">
@@ -80,7 +88,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-WS-241.14494.235" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -94,6 +103,7 @@
       <updated>1714380007011</updated>
       <workItem from="1714380007715" duration="37000" />
       <workItem from="1714380051067" duration="2055000" />
+      <workItem from="1714405446385" duration="830000" />
     </task>
     <servers />
   </component>

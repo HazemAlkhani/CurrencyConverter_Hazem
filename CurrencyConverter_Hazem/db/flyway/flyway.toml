@@ -21,7 +21,3 @@ filterFile = "filter.rgf"
 
 [redgateCompare.mysql.options.ignores]
 ignoreNewlinesInTextObjects = "off"
-
-[environments.target1]
-url = "jdbc:mysql://localhost:3306"
-schemas = [ "Converter" ]
